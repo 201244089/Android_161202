@@ -8,6 +8,8 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    int day, year, month;
+
     TextView tv1, tv2;
     Chronometer chmeter;
     Button b_start, b_stop;
@@ -51,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
                     calView.setVisibility(View.INVISIBLE);
                     tP.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
+                year = year;
+                month = month;
+                day = day;
             }
         });
 
