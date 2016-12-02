@@ -9,6 +9,7 @@ import android.widget.*;
 public class MainActivity extends AppCompatActivity {
 
     int day, year, month;
+    int hour,min;
 
     TextView tv1, tv2;
     Chronometer chmeter;
@@ -58,13 +59,31 @@ public class MainActivity extends AppCompatActivity {
 
         calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                year = year;
-                month = month;
-                day = day;
+            public void onSelectedDayChange(CalendarView view, int year1, int month1, int day1) {
+                year = year1;
+                month = month1;
+                day = day1;
+            }
+        });
+
+        tP.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                hour = hourOfDay;
+                min = minute;
+
             }
         });
 
 
+        b_stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv1.setTextColor(Color.BLACK);
+                chmeter.stop();
+                String str = year+"년"+month+"월"+day+"일"+hour+"시"+min+"분 예약됨.";
+                tv2.setText(str);
+            }
+        });
     }
 }
